@@ -9,23 +9,29 @@
 /* Begin PBXBuildFile section */
 		2E9C0D0A251397EF00176AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D09251397EF00176AA3 /* AppDelegate.swift */; };
 		2E9C0D0C251397EF00176AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */; };
-		2E9C0D0E251397EF00176AA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0D251397EF00176AA3 /* ViewController.swift */; };
+		2E9C0D0E251397EF00176AA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0D251397EF00176AA3 /* MainViewController.swift */; };
 		2E9C0D11251397EF00176AA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0F251397EF00176AA3 /* Main.storyboard */; };
 		2E9C0D14251397EF00176AA3 /* My_wishlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D12251397EF00176AA3 /* My_wishlist.xcdatamodeld */; };
 		2E9C0D16251397F100176AA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E9C0D15251397F100176AA3 /* Assets.xcassets */; };
 		2E9C0D19251397F100176AA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E9C0D17251397F100176AA3 /* LaunchScreen.storyboard */; };
+		2EEF279B2513A29B0020D06C /* ViewWishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEF279A2513A29B0020D06C /* ViewWishViewController.swift */; };
+		2EEF279D2513B7E80020D06C /* NewWishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEF279C2513B7E80020D06C /* NewWishViewController.swift */; };
+		2EEF279F2513BCB60020D06C /* WishViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEF279E2513BCB60020D06C /* WishViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2E9C0D06251397EF00176AA3 /* My wishlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My wishlist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9C0D09251397EF00176AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2E9C0D0D251397EF00176AA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2E9C0D0D251397EF00176AA3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2E9C0D10251397EF00176AA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E9C0D13251397EF00176AA3 /* My_wishlist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = My_wishlist.xcdatamodel; sourceTree = "<group>"; };
 		2E9C0D15251397F100176AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E9C0D18251397F100176AA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E9C0D1A251397F100176AA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EEF279A2513A29B0020D06C /* ViewWishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWishViewController.swift; sourceTree = "<group>"; };
+		2EEF279C2513B7E80020D06C /* NewWishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWishViewController.swift; sourceTree = "<group>"; };
+		2EEF279E2513BCB60020D06C /* WishViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +64,59 @@
 		2E9C0D08251397EF00176AA3 /* My wishlist */ = {
 			isa = PBXGroup;
 			children = (
-				2E9C0D09251397EF00176AA3 /* AppDelegate.swift */,
-				2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */,
-				2E9C0D0D251397EF00176AA3 /* ViewController.swift */,
-				2E9C0D0F251397EF00176AA3 /* Main.storyboard */,
+				2EEF27A22513BE560020D06C /* Models */,
+				2EEF27A02513BE340020D06C /* Views */,
+				2EEF27A12513BE420020D06C /* Controllers */,
+				2EEF27A42513BE8B0020D06C /* Storyboards */,
+				2EEF27A32513BE6E0020D06C /* Supporting files */,
 				2E9C0D15251397F100176AA3 /* Assets.xcassets */,
-				2E9C0D17251397F100176AA3 /* LaunchScreen.storyboard */,
 				2E9C0D1A251397F100176AA3 /* Info.plist */,
-				2E9C0D12251397EF00176AA3 /* My_wishlist.xcdatamodeld */,
 			);
 			path = "My wishlist";
+			sourceTree = "<group>";
+		};
+		2EEF27A02513BE340020D06C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2EEF279E2513BCB60020D06C /* WishViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2EEF27A12513BE420020D06C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2E9C0D0D251397EF00176AA3 /* MainViewController.swift */,
+				2EEF279C2513B7E80020D06C /* NewWishViewController.swift */,
+				2EEF279A2513A29B0020D06C /* ViewWishViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2EEF27A22513BE560020D06C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2E9C0D12251397EF00176AA3 /* My_wishlist.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2EEF27A32513BE6E0020D06C /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				2E9C0D09251397EF00176AA3 /* AppDelegate.swift */,
+				2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		2EEF27A42513BE8B0020D06C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2E9C0D0F251397EF00176AA3 /* Main.storyboard */,
+				2E9C0D17251397F100176AA3 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,8 +191,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E9C0D14251397EF00176AA3 /* My_wishlist.xcdatamodeld in Sources */,
-				2E9C0D0E251397EF00176AA3 /* ViewController.swift in Sources */,
+				2EEF279B2513A29B0020D06C /* ViewWishViewController.swift in Sources */,
+				2EEF279F2513BCB60020D06C /* WishViewCell.swift in Sources */,
+				2E9C0D0E251397EF00176AA3 /* MainViewController.swift in Sources */,
 				2E9C0D0A251397EF00176AA3 /* AppDelegate.swift in Sources */,
+				2EEF279D2513B7E80020D06C /* NewWishViewController.swift in Sources */,
 				2E9C0D0C251397EF00176AA3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
