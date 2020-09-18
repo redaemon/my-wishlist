@@ -17,6 +17,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        self.wishTable.delegate = self
+        self.wishTable.dataSource = self
     }
     
     

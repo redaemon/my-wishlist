@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dip-BS-7Jg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dip-BS-7Jg">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wishCell" rowHeight="105" id="CXz-rL-kKx" customClass="WishViewCell" customModule="My_wishlist" customModuleProvider="target">
@@ -29,29 +28,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tXJ-NC-p8n">
-                                                    <rect key="frame" x="16" y="11" width="83" height="83"/>
+                                                    <rect key="frame" x="20" y="11" width="83" height="83"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="83" id="EM3-kE-fmb"/>
                                                         <constraint firstAttribute="height" constant="83" id="M8X-Ch-pnm"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="4WP-HM-18x">
-                                                    <rect key="frame" x="114" y="14" width="95.5" height="77"/>
+                                                    <rect key="frame" x="118" y="14" width="256" height="77"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgS-XJ-Zuz">
-                                                            <rect key="frame" x="0.0" y="0.0" width="95.5" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="256" height="23.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwA-wR-qpl">
-                                                            <rect key="frame" x="0.0" y="32.5" width="95.5" height="19"/>
+                                                            <rect key="frame" x="0.0" y="32.5" width="256" height="19"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwY-Ur-2qd">
-                                                            <rect key="frame" x="0.0" y="60.5" width="95.5" height="16.5"/>
+                                                            <rect key="frame" x="0.0" y="60.5" width="256" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -73,7 +72,7 @@
                                             <outlet property="wishImage" destination="tXJ-NC-p8n" id="L74-J3-Rx0"/>
                                             <outlet property="wishPriceLabel" destination="cwA-wR-qpl" id="MpQ-Id-M2D"/>
                                             <outlet property="wishTitleLabel" destination="GgS-XJ-Zuz" id="c25-PU-M8F"/>
-                                            <segue destination="MZh-wN-5ut" kind="presentation" id="D8d-pW-TMM"/>
+                                            <segue destination="MZh-wN-5ut" kind="presentation" id="jRL-u9-n3g"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -84,6 +83,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dip-BS-7Jg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2O1-mN-xTw"/>
+                            <constraint firstAttribute="bottom" secondItem="dip-BS-7Jg" secondAttribute="bottom" id="eHm-VJ-ocD"/>
+                            <constraint firstItem="dip-BS-7Jg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h7W-PT-why"/>
+                            <constraint firstItem="dip-BS-7Jg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pJP-Q4-qV5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Wishlist" id="pLE-dk-4bt">
@@ -95,7 +100,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="siQ-al-HqW">
                             <connections>
                                 <action selector="addButtonTapped:" destination="BYZ-38-t0r" id="7ij-Ah-xsq"/>
-                                <segue destination="zs8-1w-cSp" kind="presentation" id="1tg-Yt-eM9"/>
+                                <segue destination="zs8-1w-cSp" kind="presentation" identifier="newWish" id="BUE-Ga-ju2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -114,7 +119,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gel-Wi-wee">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="20" minY="0.0" maxX="16" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="IWD-4g-Woe">
@@ -232,6 +237,9 @@
                                                     <state key="normal" title="$ ↓">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="currencyButtonTapped:" destination="m9z-3F-9UP" eventType="touchUpInside" id="nSb-iJ-CVo"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -323,9 +331,25 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="View Wish" id="jFO-fS-ciD">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jMS-q7-oSi"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="aCV-8G-apt"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jMS-q7-oSi">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="m9z-3F-9UP" id="roN-Ip-UAK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="aCV-8G-apt">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="m9z-3F-9UP" id="c7E-fA-wZn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="wishCommentLabel" destination="HrX-ld-mAB" id="jZV-hL-4xm"/>
+                        <outlet property="wishGroupLabel" destination="fLD-ur-6UK" id="9gy-2y-WHL"/>
+                        <outlet property="wishImage" destination="LDO-Ck-FIM" id="Utj-14-Jgz"/>
+                        <outlet property="wishLinkLabel" destination="jdG-zZ-hn3" id="qox-YQ-Gzg"/>
+                        <outlet property="wishPriceLabel" destination="szy-Su-dfy" id="eLD-t0-aF6"/>
+                        <outlet property="wishTitleLabel" destination="rQB-H8-6yh" id="nvA-Pu-VcD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzu-4C-AsH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -350,6 +374,9 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a name of the wish" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IO1-Xl-pcV">
                                                     <rect key="frame" x="20" y="0.0" width="334" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="vWR-zZ-TTG"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -398,6 +425,9 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose the wish group" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f0B-iE-kQ6">
                                                     <rect key="frame" x="20" y="0.0" width="334" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="AzY-E9-x55"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -423,6 +453,9 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the wish price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxj-w2-D8t">
                                                     <rect key="frame" x="20" y="0.0" width="324" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="N9b-7i-m6s"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -432,6 +465,9 @@
                                                     <state key="normal" title="$ ↓">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="currencyButtonTapped:" destination="pZN-TR-hEF" eventType="touchUpInside" id="3tu-Vd-vCH"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -458,6 +494,9 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a link of the wish" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="505-RI-1ey">
                                                     <rect key="frame" x="20" y="0.0" width="334" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="4jB-JY-fvW"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -483,6 +522,9 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a comment for the wish" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8PP-hv-9nc">
                                                     <rect key="frame" x="20" y="0.0" width="334" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="Iwf-fQ-IAh"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -504,9 +546,25 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Wish" id="fQI-9Z-KM1">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3hJ-8b-aAs"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="kma-V5-uOy"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3hJ-8b-aAs">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="pZN-TR-hEF" id="SbC-tw-efR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="kma-V5-uOy">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="pZN-TR-hEF" id="635-zB-hxT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="wishCommentField" destination="8PP-hv-9nc" id="jj2-NY-rKm"/>
+                        <outlet property="wishGroupField" destination="f0B-iE-kQ6" id="XH7-Je-ZeB"/>
+                        <outlet property="wishImageInsert" destination="5V0-RM-b37" id="BFc-B0-Zuf"/>
+                        <outlet property="wishLinkField" destination="505-RI-1ey" id="y0r-mE-foq"/>
+                        <outlet property="wishPriceField" destination="wxj-w2-D8t" id="Vox-J3-ZTU"/>
+                        <outlet property="wishTitleField" destination="IO1-Xl-pcV" id="WU5-Xu-ji5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awZ-Bb-Riq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -564,7 +622,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BPe-Pl-7Ws">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="BPe-Pl-7Ws">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mly-QN-2bj">
@@ -610,6 +668,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="eb0-Uw-uru" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AvU-Sl-LqF">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -646,20 +705,40 @@
         <scene sceneID="wcV-Tr-t7U">
             <objects>
                 <tableViewController id="eqx-il-3Wu" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZhC-PK-G2e">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZhC-PK-G2e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="v8i-c7-axW">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v8i-c7-axW" id="1vS-Dm-nob">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <sections>
+                            <tableViewSection id="X8G-fl-zPE">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="v8i-c7-axW">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v8i-c7-axW" id="1vS-Dm-nob">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jJN-h6-WC9">
+                                        <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jJN-h6-WC9" id="1nF-Iw-tmB">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="P3e-sg-Eaz">
+                                        <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P3e-sg-Eaz" id="Aib-1V-TEE">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="eqx-il-3Wu" id="H5e-GW-BOo"/>
                             <outlet property="delegate" destination="eqx-il-3Wu" id="beF-eW-J3U"/>
