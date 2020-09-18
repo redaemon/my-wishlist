@@ -16,6 +16,7 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var wishPriceLabel: UILabel!
     @IBOutlet weak var wishLinkLabel: UILabel!
     @IBOutlet weak var wishCommentLabel: UILabel!
+    @IBOutlet weak var wishPriceCurrencyLabel: UILabel!
     
     
     override func viewDidLoad() {

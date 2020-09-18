@@ -29,6 +29,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func addButtonTapped(_ sender: Any) {
     }
     
+    @IBAction func unwindToMainView(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.viewWillAppear(true)
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         3
