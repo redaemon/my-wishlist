@@ -14,6 +14,7 @@ class WishViewCell: UITableViewCell {
     @IBOutlet weak var wishTitleLabel: UILabel!
     @IBOutlet weak var wishPriceLabel: UILabel!
     @IBOutlet weak var wishCommentLabel: UILabel!
+    @IBOutlet weak var wishPriceCurrency: UILabel!
     
     
     override func awakeFromNib() {

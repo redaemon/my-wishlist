@@ -16,6 +16,7 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
     var groups: [String] = ["Nearest", "Longterm", "Future"]
     var selectedGroup: String?
     var imageIsChanged = false
+    var currentWishInNew: Wish!
     
     @IBOutlet weak var wishTitleField: UITextField!
     @IBOutlet weak var wishImageInsert: UIImageView!
@@ -31,13 +32,43 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
 
         createPickerView()
         
+        if currentWishInNew != nil {
+            self.title = "Edit wish"
+            
+            wishImageInsert.image = UIImage(data: currentWishInNew.wishImage!)
+            wishTitleField.text = currentWishInNew.wishTitle
+            wishPriceField.text = String(currentWishInNew.wishPrice)
+            wishCommentField.text = currentWishInNew.wishComment
+            wishLinkField.text = currentWishInNew.wishLink
+            wishGroupField.text = currentWishInNew.wishGroup
+            wishPriceCurrencyLabel.text = currentWishInNew.currency
+        }
+        
     }
 
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        let wishTitle = wishTitleField.text
+        let wishGroup = wishGroupField.text
+        let wishLink = wishLinkField.text
+        let wishComment = wishCommentField.text
+        let wishPrice = Int(wishPriceField.text!)
+        let wishCurrency = wishPriceCurrencyLabel.text
+        let wishImage = wishImageInsert.image?.pngData()
+        
+        if currentWishInNew != nil {
+            saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: wishGroupField.text, withLink: wishLink, withComment: wishComment, withPrice: wishPrice!, withCurrency: wishPriceCurrencyLabel.text)
+        } else {
+            saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: wishGroup, withLink: wishLink, withComment: wishComment, withPrice: wishPrice!, withCurrency: wishCurrency)
+        }
+
+        
+        dismiss(animated: true)
     }
     
     
-    @IBAction func cancelButtonTapped(_ sender: Any) {
+    
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
     
@@ -121,17 +152,29 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
         
         let context = getContext()
         
-        guard let entityTask = NSEntityDescription.entity(forEntityName: "Wish", in: context) else { return }
-        
-        let wishObject = Wish(entity: entityTask, insertInto: context)
-        
-        wishObject.wishTitle = wishTitle
-        wishObject.wishImage = wishImage
-        wishObject.wishGroup = wishGroup
-        wishObject.wishLink = wishLink
-        wishObject.wishComment = wishComment
-        wishObject.wishPrice = Int32(wishPrice)
-        wishObject.currency = wishPriceCurrency
+        if currentWishInNew == nil {
+            
+            guard let entityWish = NSEntityDescription.entity(forEntityName: "Wish", in: context) else { return }
+            let wishObject = Wish(entity: entityWish, insertInto: context)
+            print("new")
+            wishObject.wishTitle = wishTitle
+            wishObject.wishImage = wishImage
+            wishObject.wishGroup = wishGroup
+            wishObject.wishLink = wishLink
+            wishObject.wishComment = wishComment
+            wishObject.wishPrice = Int32(wishPrice)
+            wishObject.currency = wishPriceCurrency
+        } else {
+            
+            print("rewrite")
+            currentWishInNew.wishTitle = wishTitle
+            currentWishInNew.wishImage = wishImage
+            currentWishInNew.wishGroup = wishGroup
+            currentWishInNew.wishLink = wishLink
+            currentWishInNew.wishComment = wishComment
+            currentWishInNew.wishPrice = Int32(wishPrice)
+            currentWishInNew.currency = wishPriceCurrency
+        }
         
         do {
             try context.save()

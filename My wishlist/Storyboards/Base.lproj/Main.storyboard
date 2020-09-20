@@ -34,23 +34,24 @@
                                                         <constraint firstAttribute="height" constant="83" id="M8X-Ch-pnm"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="4WP-HM-18x">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4WP-HM-18x">
                                                     <rect key="frame" x="118" y="14" width="256" height="77"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgS-XJ-Zuz">
-                                                            <rect key="frame" x="0.0" y="0.0" width="256" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="256" height="23"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwA-wR-qpl">
-                                                            <rect key="frame" x="0.0" y="32.5" width="256" height="19"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwA-wR-qpl">
+                                                            <rect key="frame" x="0.0" y="33" width="256" height="18.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
+                                                            <size key="shadowOffset" width="0.0" height="0.0"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwY-Ur-2qd">
-                                                            <rect key="frame" x="0.0" y="60.5" width="256" height="16.5"/>
+                                                            <rect key="frame" x="0.0" y="61.5" width="256" height="15.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -72,7 +73,7 @@
                                             <outlet property="wishImage" destination="tXJ-NC-p8n" id="L74-J3-Rx0"/>
                                             <outlet property="wishPriceLabel" destination="cwA-wR-qpl" id="MpQ-Id-M2D"/>
                                             <outlet property="wishTitleLabel" destination="GgS-XJ-Zuz" id="c25-PU-M8F"/>
-                                            <segue destination="MZh-wN-5ut" kind="presentation" id="jRL-u9-n3g"/>
+                                            <segue destination="MZh-wN-5ut" kind="presentation" identifier="showWish" id="jRL-u9-n3g"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -131,8 +132,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="249"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LDO-Ck-FIM">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="LDO-Ck-FIM">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="249"/>
+                                                    <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -254,7 +256,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="YQb-KK-pL4" secondAttribute="bottom" id="GUz-TQ-i0F"/>
                                                 <constraint firstItem="YQb-KK-pL4" firstAttribute="leading" secondItem="Th3-Rv-Zzo" secondAttribute="leading" constant="20" id="HJK-7l-0wj"/>
                                                 <constraint firstAttribute="trailing" secondItem="TCd-B4-EQh" secondAttribute="trailing" constant="20" id="LfU-Oi-oLj"/>
-                                                <constraint firstItem="6K9-MP-c3t" firstAttribute="leading" secondItem="YQb-KK-pL4" secondAttribute="trailing" constant="260" id="Qag-Fg-oQY"/>
+                                                <constraint firstItem="6K9-MP-c3t" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YQb-KK-pL4" secondAttribute="trailing" constant="130" id="Qag-Fg-oQY"/>
                                                 <constraint firstItem="6K9-MP-c3t" firstAttribute="top" secondItem="Th3-Rv-Zzo" secondAttribute="top" constant="46" id="Wl3-Rm-mLk"/>
                                                 <constraint firstItem="YQb-KK-pL4" firstAttribute="top" secondItem="Th3-Rv-Zzo" secondAttribute="topMargin" constant="4" id="ae1-Yh-j3Y"/>
                                                 <constraint firstItem="TCd-B4-EQh" firstAttribute="top" secondItem="Th3-Rv-Zzo" secondAttribute="top" constant="42" id="fq8-7Y-gAC"/>
@@ -349,6 +351,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="aCV-8G-apt">
                             <connections>
                                 <action selector="editButtonTapped:" destination="m9z-3F-9UP" id="c7E-fA-wZn"/>
+                                <segue destination="zs8-1w-cSp" kind="presentation" identifier="editWish" modalPresentationStyle="fullScreen" id="3eJ-mx-e8r"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -371,7 +374,7 @@
             <objects>
                 <tableViewController id="pZN-TR-hEF" customClass="NewWishViewController" customModule="My_wishlist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="j5p-fS-Ahp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
                             <tableViewSection headerTitle="Wish title" id="pjd-6B-KcZ">
@@ -576,8 +579,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="kma-V5-uOy">
                             <connections>
-                                <action selector="saveButtonTapped:" destination="pZN-TR-hEF" id="635-zB-hxT"/>
-                                <segue destination="bUK-Bi-sMd" kind="unwind" identifier="saveWishAndReload" unwindAction="unwindToMainViewWithSegue:" id="Z2R-iT-ZiM"/>
+                                <action selector="saveButtonPressed:" destination="pZN-TR-hEF" id="YpQ-f8-mpe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -589,6 +591,7 @@
                         <outlet property="wishPriceCurrencyLabel" destination="W0q-Ov-3eG" id="WNz-rD-vPY"/>
                         <outlet property="wishPriceField" destination="wxj-w2-D8t" id="Vox-J3-ZTU"/>
                         <outlet property="wishTitleField" destination="IO1-Xl-pcV" id="WU5-Xu-ji5"/>
+                        <segue destination="bUK-Bi-sMd" kind="unwind" identifier="saveWishAndReload" unwindAction="unwindToMainViewWithSegue:" id="dTS-Ib-gkF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awZ-Bb-Riq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -676,7 +679,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zs8-1w-cSp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E7B-Oo-drT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -802,4 +805,7 @@
         <image name="photo.fill.on.rectangle.fill" catalog="system" width="64" height="48"/>
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3eJ-mx-e8r"/>
+    </inferredMetricsTieBreakers>
 </document>
