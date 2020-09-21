@@ -13,6 +13,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var wish: Wish!
     var wishes: [Wish] = []
+    var groupsForSection: [String] = ["Longterm", "Nearest", "Future"]
+    let wishTableCell = WishViewCell()
     
     @IBOutlet weak var wishTable: UITableView!
     
@@ -22,6 +24,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.wishTable.delegate = self
         self.wishTable.dataSource = self
+    
     }
     
     
@@ -30,6 +33,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func addButtonTapped(_ sender: Any) {
     }
+    
     
     @IBAction func unwindToMainView(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
@@ -42,22 +46,32 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return wishes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "wishCell", for: indexPath) as! WishViewCell
-        let wish = wishes[indexPath.row]
         
+        let wish = wishes[indexPath.row]
         let image = UIImage(data: wish.wishImage!)
         let currency = (wish.currency)!
         cell.wishImage.image = image
         cell.wishTitleLabel.text = wish.wishTitle
         cell.wishPriceLabel.text = "\(String(wish.wishPrice)) \(currency)"
-        cell.wishCommentLabel.text = wish.wishComment
+        cell.wishCommentLabel.text = wish.wishGroup
+        
+        if wish.wishGroup == "Nearest" {
+            cell.wishCommentLabel.textColor = .systemGreen
+        } else if wish.wishGroup == "Longterm" {
+            cell.wishCommentLabel.textColor = .systemOrange
+        } else if wish.wishGroup == "Future" {
+            cell.wishCommentLabel.textColor = .systemRed
+        }
         
         return cell
     }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -90,15 +104,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print("here we go")
         let context = getContext()
         let fetchRequest: NSFetchRequest<Wish> = Wish.fetchRequest()
-        
+        let sort = NSSortDescriptor(key: "wishGroup", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+
         do {
             wishes = try context.fetch(fetchRequest)
-            
+
         } catch let error as NSError {
             print(error.localizedDescription)
         }
+
         
         self.wishTable.reloadData()
         
@@ -106,4 +124,3 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 
 }
-

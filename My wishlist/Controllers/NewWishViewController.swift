@@ -156,7 +156,6 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
             
             guard let entityWish = NSEntityDescription.entity(forEntityName: "Wish", in: context) else { return }
             let wishObject = Wish(entity: entityWish, insertInto: context)
-            print("new")
             wishObject.wishTitle = wishTitle
             wishObject.wishImage = wishImage
             wishObject.wishGroup = wishGroup
@@ -165,8 +164,6 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
             wishObject.wishPrice = Int32(wishPrice)
             wishObject.currency = wishPriceCurrency
         } else {
-            
-            print("rewrite")
             currentWishInNew.wishTitle = wishTitle
             currentWishInNew.wishImage = wishImage
             currentWishInNew.wishGroup = wishGroup
