@@ -13,7 +13,7 @@ class WishViewCell: UITableViewCell {
     @IBOutlet weak var wishImage: UIImageView!
     @IBOutlet weak var wishTitleLabel: UILabel!
     @IBOutlet weak var wishPriceLabel: UILabel!
-    @IBOutlet weak var wishCommentLabel: UILabel!
+    @IBOutlet weak var wishGroupLabel: UILabel!
     @IBOutlet weak var wishPriceCurrency: UILabel!
     
     

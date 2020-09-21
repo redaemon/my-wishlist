@@ -29,6 +29,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func editButtonTapped(_ sender: Any) {
+        self.wishTable.setEditing(!wishTable.isEditing, animated: true)
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
@@ -59,14 +60,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.wishImage.image = image
         cell.wishTitleLabel.text = wish.wishTitle
         cell.wishPriceLabel.text = "\(String(wish.wishPrice)) \(currency)"
-        cell.wishCommentLabel.text = wish.wishGroup
+        cell.wishGroupLabel.text = wish.wishGroup
         
         if wish.wishGroup == "Nearest" {
-            cell.wishCommentLabel.textColor = .systemGreen
+            cell.wishGroupLabel.textColor = .systemGreen
         } else if wish.wishGroup == "Longterm" {
-            cell.wishCommentLabel.textColor = .systemOrange
+            cell.wishGroupLabel.textColor = .systemOrange
         } else if wish.wishGroup == "Future" {
-            cell.wishCommentLabel.textColor = .systemRed
+            cell.wishGroupLabel.textColor = .systemRed
         }
         
         return cell
@@ -79,6 +80,45 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let context = getContext()
+        let wish: Wish! = wishes[indexPath.row]
+        
+        let deleteTask = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+            context.delete(wish)
+            self.wishes.remove(at: indexPath.row)
+            
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            completionHandler(true)
+        }
+        deleteTask.image = UIImage(systemName: "trash")
+        
+        let editTask = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let editViewController = storyboard.instantiateViewController(withIdentifier: "newWish") as! NewWishViewController
+            let navController = UINavigationController(rootViewController: editViewController)
+            
+            editViewController.currentWishInNew = wish
+            self.present(navController, animated: true, completion: nil)
+            
+            completionHandler(true)
+        }
+        editTask.backgroundColor = .systemGreen
+        editTask.image = UIImage(systemName: "pencil")
+        
+        return UISwipeActionsConfiguration(actions: [deleteTask, editTask])
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Number of wishes: \(wishes.count)"
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,8 +143,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print("here we go")
+
         let context = getContext()
         let fetchRequest: NSFetchRequest<Wish> = Wish.fetchRequest()
         let sort = NSSortDescriptor(key: "wishGroup", ascending: false)

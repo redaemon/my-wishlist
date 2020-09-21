@@ -69,7 +69,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="wishCommentLabel" destination="AwY-Ur-2qd" id="pEa-Zf-pJ1"/>
+                                            <outlet property="wishGroupLabel" destination="AwY-Ur-2qd" id="pEa-Zf-pJ1"/>
                                             <outlet property="wishImage" destination="tXJ-NC-p8n" id="L74-J3-Rx0"/>
                                             <outlet property="wishPriceLabel" destination="cwA-wR-qpl" id="MpQ-Id-M2D"/>
                                             <outlet property="wishTitleLabel" destination="GgS-XJ-Zuz" id="c25-PU-M8F"/>
@@ -133,7 +133,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="LDO-Ck-FIM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="249"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="249.00000000000006"/>
                                                     <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
@@ -372,9 +372,9 @@
         <!--New Wish-->
         <scene sceneID="qGx-5a-xdg">
             <objects>
-                <tableViewController id="pZN-TR-hEF" customClass="NewWishViewController" customModule="My_wishlist" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="newWish" id="pZN-TR-hEF" customClass="NewWishViewController" customModule="My_wishlist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="j5p-fS-Ahp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
                             <tableViewSection headerTitle="Wish title" id="pjd-6B-KcZ">
@@ -415,7 +415,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="5V0-RM-b37">
-                                                    <rect key="frame" x="69" y="17" width="236" height="201"/>
+                                                    <rect key="frame" x="69" y="17" width="236" height="201.00000000000006"/>
                                                     <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
@@ -592,6 +592,7 @@
                         <outlet property="wishPriceField" destination="wxj-w2-D8t" id="Vox-J3-ZTU"/>
                         <outlet property="wishTitleField" destination="IO1-Xl-pcV" id="WU5-Xu-ji5"/>
                         <segue destination="bUK-Bi-sMd" kind="unwind" identifier="saveWishAndReload" unwindAction="unwindToMainViewWithSegue:" id="dTS-Ib-gkF"/>
+                        <segue destination="bUK-Bi-sMd" kind="unwind" identifier="saveWishAndReloadCollection" unwindAction="unwindToCollectionViewWithSegue:" id="TT3-5R-wJT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awZ-Bb-Riq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -639,25 +640,42 @@
         <!--Image grid-->
         <scene sceneID="4l8-US-6uq">
             <objects>
-                <collectionViewController id="oIn-ad-IZh" sceneMemberID="viewController">
+                <collectionViewController id="oIn-ad-IZh" customClass="ImageCollectionViewController" customModule="My_wishlist" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="r9A-K9-u4u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dAm-Rd-jov">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="BPe-Pl-7Ws">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="BPe-Pl-7Ws" customClass="WishCollectionViewCell" customModule="My_wishlist" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mly-QN-2bj">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pyq-95-CrA">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <constraints>
+                                        <constraint firstItem="Pyq-95-CrA" firstAttribute="top" secondItem="mly-QN-2bj" secondAttribute="top" id="7DL-Ds-sAv"/>
+                                        <constraint firstAttribute="bottom" secondItem="Pyq-95-CrA" secondAttribute="bottom" id="Gug-7n-rb3"/>
+                                        <constraint firstItem="Pyq-95-CrA" firstAttribute="leading" secondItem="mly-QN-2bj" secondAttribute="leading" id="hTr-Yl-lMe"/>
+                                        <constraint firstAttribute="trailing" secondItem="Pyq-95-CrA" secondAttribute="trailing" id="nC5-DW-uwX"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
+                                <size key="customSize" width="100" height="100"/>
+                                <connections>
+                                    <outlet property="imageView" destination="Pyq-95-CrA" id="ae6-xN-cdn"/>
+                                    <segue destination="MZh-wN-5ut" kind="presentation" identifier="showWish" id="tJQ-UP-TMn"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -666,12 +684,19 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Image grid" id="Ioy-XQ-Pd8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bLj-cC-X3O"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bLj-cC-X3O">
+                            <connections>
+                                <segue destination="zs8-1w-cSp" kind="presentation" identifier="newWishFromCollection" id="Fp4-Y9-Y27"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageCollectionView" destination="r9A-K9-u4u" id="1Xl-OA-g5n"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfe-xM-gWv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1958" y="1156"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="1155.8035714285713"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yBd-00-Z5I">
@@ -679,7 +704,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zs8-1w-cSp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E7B-Oo-drT">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -806,6 +831,7 @@
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3eJ-mx-e8r"/>
+        <segue reference="Fp4-Y9-Y27"/>
+        <segue reference="tJQ-UP-TMn"/>
     </inferredMetricsTieBreakers>
 </document>

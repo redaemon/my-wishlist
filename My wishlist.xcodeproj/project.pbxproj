@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0D547D2518D4C600E1B483 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D547C2518D4C600E1B483 /* ImageCollectionViewController.swift */; };
+		2E0D547F2518D54D00E1B483 /* WishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D547E2518D54D00E1B483 /* WishCollectionViewCell.swift */; };
 		2E9C0D0A251397EF00176AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D09251397EF00176AA3 /* AppDelegate.swift */; };
 		2E9C0D0C251397EF00176AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */; };
 		2E9C0D0E251397EF00176AA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0D251397EF00176AA3 /* MainViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E0D547C2518D4C600E1B483 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
+		2E0D547E2518D54D00E1B483 /* WishCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishCollectionViewCell.swift; sourceTree = "<group>"; };
 		2E9C0D06251397EF00176AA3 /* My wishlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My wishlist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9C0D09251397EF00176AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				2EEF279E2513BCB60020D06C /* WishViewCell.swift */,
+				2E0D547E2518D54D00E1B483 /* WishCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				2E9C0D0D251397EF00176AA3 /* MainViewController.swift */,
+				2E0D547C2518D4C600E1B483 /* ImageCollectionViewController.swift */,
 				2EEF279C2513B7E80020D06C /* NewWishViewController.swift */,
 				2EEF279A2513A29B0020D06C /* ViewWishViewController.swift */,
 			);
@@ -194,9 +200,11 @@
 				2EEF279B2513A29B0020D06C /* ViewWishViewController.swift in Sources */,
 				2EEF279F2513BCB60020D06C /* WishViewCell.swift in Sources */,
 				2E9C0D0E251397EF00176AA3 /* MainViewController.swift in Sources */,
+				2E0D547D2518D4C600E1B483 /* ImageCollectionViewController.swift in Sources */,
 				2E9C0D0A251397EF00176AA3 /* AppDelegate.swift in Sources */,
 				2EEF279D2513B7E80020D06C /* NewWishViewController.swift in Sources */,
 				2E9C0D0C251397EF00176AA3 /* SceneDelegate.swift in Sources */,
+				2E0D547F2518D54D00E1B483 /* WishCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

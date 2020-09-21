@@ -17,6 +17,7 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
     var selectedGroup: String?
     var imageIsChanged = false
     var currentWishInNew: Wish!
+    var userFromCollectionView = false
     
     @IBOutlet weak var wishTitleField: UITextField!
     @IBOutlet weak var wishImageInsert: UIImageView!
@@ -43,6 +44,7 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
             wishGroupField.text = currentWishInNew.wishGroup
             wishPriceCurrencyLabel.text = currentWishInNew.currency
         }
+
         
     }
 
@@ -179,7 +181,11 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
             print(error.localizedDescription)
         }
         
-        self.performSegue(withIdentifier: "saveWishAndReload", sender: self)
+        if userFromCollectionView == true {
+            self.performSegue(withIdentifier: "saveWishAndReloadCollection", sender: self)
+        } else {
+           self.performSegue(withIdentifier: "saveWishAndReload", sender: self)
+        }
 
     }
 
