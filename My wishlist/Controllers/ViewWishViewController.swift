@@ -72,7 +72,7 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         case "$":
             
             if wishPriceCurrencyLabel.text == "€" {
-                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) / 0.84))
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * 0.84))
             } else if wishPriceCurrencyLabel.text == "₽" {
                 wishPriceLabel.text = String(currentWish.wishPrice * 78)
             } else {

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2E0D547D2518D4C600E1B483 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D547C2518D4C600E1B483 /* ImageCollectionViewController.swift */; };
 		2E0D547F2518D54D00E1B483 /* WishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D547E2518D54D00E1B483 /* WishCollectionViewCell.swift */; };
+		2E0D5481251957C500E1B483 /* GroupsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D5480251957C500E1B483 /* GroupsViewCell.swift */; };
+		2E0D54832519758300E1B483 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D54822519758300E1B483 /* NewGroupViewController.swift */; };
+		2E0D5485251975A300E1B483 /* ViewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D5484251975A300E1B483 /* ViewGroupViewController.swift */; };
+		2E0D5487251989DC00E1B483 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D5486251989DC00E1B483 /* SettingsViewController.swift */; };
 		2E9C0D0A251397EF00176AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D09251397EF00176AA3 /* AppDelegate.swift */; };
 		2E9C0D0C251397EF00176AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */; };
 		2E9C0D0E251397EF00176AA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0D251397EF00176AA3 /* MainViewController.swift */; };
@@ -24,6 +28,10 @@
 /* Begin PBXFileReference section */
 		2E0D547C2518D4C600E1B483 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		2E0D547E2518D54D00E1B483 /* WishCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishCollectionViewCell.swift; sourceTree = "<group>"; };
+		2E0D5480251957C500E1B483 /* GroupsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewCell.swift; sourceTree = "<group>"; };
+		2E0D54822519758300E1B483 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
+		2E0D5484251975A300E1B483 /* ViewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGroupViewController.swift; sourceTree = "<group>"; };
+		2E0D5486251989DC00E1B483 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2E9C0D06251397EF00176AA3 /* My wishlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My wishlist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9C0D09251397EF00176AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +92,7 @@
 			children = (
 				2EEF279E2513BCB60020D06C /* WishViewCell.swift */,
 				2E0D547E2518D54D00E1B483 /* WishCollectionViewCell.swift */,
+				2E0D5480251957C500E1B483 /* GroupsViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -95,6 +104,9 @@
 				2E0D547C2518D4C600E1B483 /* ImageCollectionViewController.swift */,
 				2EEF279C2513B7E80020D06C /* NewWishViewController.swift */,
 				2EEF279A2513A29B0020D06C /* ViewWishViewController.swift */,
+				2E0D54822519758300E1B483 /* NewGroupViewController.swift */,
+				2E0D5484251975A300E1B483 /* ViewGroupViewController.swift */,
+				2E0D5486251989DC00E1B483 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -200,11 +212,15 @@
 				2EEF279B2513A29B0020D06C /* ViewWishViewController.swift in Sources */,
 				2EEF279F2513BCB60020D06C /* WishViewCell.swift in Sources */,
 				2E9C0D0E251397EF00176AA3 /* MainViewController.swift in Sources */,
+				2E0D5481251957C500E1B483 /* GroupsViewCell.swift in Sources */,
 				2E0D547D2518D4C600E1B483 /* ImageCollectionViewController.swift in Sources */,
+				2E0D54832519758300E1B483 /* NewGroupViewController.swift in Sources */,
 				2E9C0D0A251397EF00176AA3 /* AppDelegate.swift in Sources */,
 				2EEF279D2513B7E80020D06C /* NewWishViewController.swift in Sources */,
 				2E9C0D0C251397EF00176AA3 /* SceneDelegate.swift in Sources */,
+				2E0D5487251989DC00E1B483 /* SettingsViewController.swift in Sources */,
 				2E0D547F2518D54D00E1B483 /* WishCollectionViewCell.swift in Sources */,
+				2E0D5485251975A300E1B483 /* ViewGroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="groupName" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wish" inverseName="relationship" inverseEntity="Wish"/>
+    </entity>
     <entity name="Wish" representedClassName="Wish" syncable="YES" codeGenerationType="class">
         <attribute name="currency" optional="YES" attributeType="String"/>
         <attribute name="wishComment" optional="YES" attributeType="String"/>
@@ -8,8 +13,10 @@
         <attribute name="wishLink" optional="YES" attributeType="String"/>
         <attribute name="wishPrice" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="wishTitle" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="relationship" inverseEntity="Group"/>
     </entity>
     <elements>
-        <element name="Wish" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Wish" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Group" positionX="-63" positionY="36" width="128" height="88"/>
     </elements>
 </model>
