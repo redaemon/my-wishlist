@@ -271,31 +271,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Uqb-7K-QUt">
-                                                    <rect key="frame" x="20" y="15" width="63.5" height="51"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u32-Ou-1Vo">
-                                                            <rect key="frame" x="0.0" y="0.0" width="63.5" height="19.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdG-zZ-hn3">
-                                                            <rect key="frame" x="0.0" y="32.5" width="63.5" height="18.5"/>
-                                                            <accessibility key="accessibilityConfiguration">
-                                                                <accessibilityTraits key="traits" link="YES" staticText="YES"/>
-                                                            </accessibility>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u32-Ou-1Vo">
+                                                    <rect key="frame" x="20" y="13" width="32" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" editable="NO" text="Wish link" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tuV-fJ-7Qh">
+                                                    <rect key="frame" x="20" y="45.5" width="264" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="264" id="DR3-ic-pfR"/>
+                                                    </constraints>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Uqb-7K-QUt" firstAttribute="leading" secondItem="y1h-s0-aaH" secondAttribute="leading" constant="20" id="HfH-n2-c76"/>
-                                                <constraint firstItem="Uqb-7K-QUt" firstAttribute="top" secondItem="y1h-s0-aaH" secondAttribute="topMargin" constant="4" id="b2l-u4-iFp"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Uqb-7K-QUt" secondAttribute="bottom" id="bCc-5S-DQ9"/>
+                                                <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="u32-Ou-1Vo" secondAttribute="trailing" constant="342" id="2Pn-13-1jR"/>
+                                                <constraint firstItem="u32-Ou-1Vo" firstAttribute="leading" secondItem="y1h-s0-aaH" secondAttribute="leadingMargin" id="4vR-j3-zOY"/>
+                                                <constraint firstItem="tuV-fJ-7Qh" firstAttribute="bottom" secondItem="y1h-s0-aaH" secondAttribute="bottomMargin" id="NI4-dR-hPu"/>
+                                                <constraint firstItem="tuV-fJ-7Qh" firstAttribute="leading" secondItem="y1h-s0-aaH" secondAttribute="leadingMargin" id="aiw-PL-kGh"/>
+                                                <constraint firstItem="u32-Ou-1Vo" firstAttribute="top" secondItem="y1h-s0-aaH" secondAttribute="topMargin" constant="2" id="g1D-rz-1IU"/>
+                                                <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="tuV-fJ-7Qh" secondAttribute="trailing" constant="110" id="p1z-3F-RoD"/>
+                                                <constraint firstItem="tuV-fJ-7Qh" firstAttribute="top" secondItem="u32-Ou-1Vo" secondAttribute="bottom" constant="12" id="rSl-EW-c0G"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -359,7 +360,7 @@
                         <outlet property="wishCommentLabel" destination="HrX-ld-mAB" id="jZV-hL-4xm"/>
                         <outlet property="wishGroupLabel" destination="fLD-ur-6UK" id="9gy-2y-WHL"/>
                         <outlet property="wishImage" destination="LDO-Ck-FIM" id="Utj-14-Jgz"/>
-                        <outlet property="wishLinkLabel" destination="jdG-zZ-hn3" id="qox-YQ-Gzg"/>
+                        <outlet property="wishLinkText" destination="tuV-fJ-7Qh" id="uhU-u3-FEm"/>
                         <outlet property="wishPriceCurrencyLabel" destination="6K9-MP-c3t" id="BOM-WC-RKX"/>
                         <outlet property="wishPriceLabel" destination="szy-Su-dfy" id="eLD-t0-aF6"/>
                         <outlet property="wishTitleLabel" destination="rQB-H8-6yh" id="nvA-Pu-VcD"/>
@@ -374,7 +375,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="newWish" id="pZN-TR-hEF" customClass="NewWishViewController" customModule="My_wishlist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="j5p-fS-Ahp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
                             <tableViewSection headerTitle="Wish title" id="pjd-6B-KcZ">
@@ -584,6 +585,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="saveButton" destination="kma-V5-uOy" id="Gz5-2f-RGY"/>
                         <outlet property="wishCommentField" destination="8PP-hv-9nc" id="jj2-NY-rKm"/>
                         <outlet property="wishGroupField" destination="f0B-iE-kQ6" id="XH7-Je-ZeB"/>
                         <outlet property="wishImageInsert" destination="5V0-RM-b37" id="BFc-B0-Zuf"/>
@@ -704,7 +706,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zs8-1w-cSp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E7B-Oo-drT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1257,7 +1259,7 @@
         <image name="trash.fill" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fp4-Y9-Y27"/>
+        <segue reference="3eJ-mx-e8r"/>
         <segue reference="tJQ-UP-TMn"/>
     </inferredMetricsTieBreakers>
 </document>

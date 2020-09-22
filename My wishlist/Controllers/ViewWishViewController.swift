@@ -24,6 +24,8 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var wishLinkLabel: UILabel!
     @IBOutlet weak var wishCommentLabel: UILabel!
     @IBOutlet weak var wishPriceCurrencyLabel: UILabel!
+    @IBOutlet weak var wishLinkText: UITextView!
+    
     
     
     override func viewDidLoad() {
@@ -33,11 +35,14 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         wishTitleLabel.text = currentWish.wishTitle
         wishPriceLabel.text = String(currentWish.wishPrice)
         wishCommentLabel.text = currentWish.wishComment
-        wishLinkLabel.text = currentWish.wishLink
+        //wishLinkLabel.text = currentWish.wishLink
         wishGroupLabel.text = currentWish.wishGroup
         wishPriceCurrencyLabel.text = currentWish.currency
-        
+        wishLinkText.text = currentWish.wishLink
         switchCurrency(currency: currentWish.currency)
+        
+        wishLinkText.textContainerInset = UIEdgeInsets.zero
+        wishLinkText.textContainer.lineFragmentPadding = 0
 
     }
     
@@ -139,5 +144,6 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         }
     }
 }
+
 
 

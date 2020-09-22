@@ -13,7 +13,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var wish: Wish!
     var wishes: [Wish] = []
-    var groupsForSection: [String] = ["Longterm", "Nearest", "Future"]
+    var groupEntity: Group!
+    let groupsViewCell = GroupsViewCell()
     let wishTableCell = WishViewCell()
     
     @IBOutlet weak var wishTable: UITableView!
@@ -61,14 +62,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.wishTitleLabel.text = wish.wishTitle
         cell.wishPriceLabel.text = "\(String(wish.wishPrice)) \(currency)"
         cell.wishGroupLabel.text = wish.wishGroup
+        cell.wishGroupLabel.textColor = getColorToGroupName(withGroup: wish.wishGroup)
         
-        if wish.wishGroup == "Nearest" {
-            cell.wishGroupLabel.textColor = .systemGreen
-        } else if wish.wishGroup == "Longterm" {
-            cell.wishGroupLabel.textColor = .systemOrange
-        } else if wish.wishGroup == "Future" {
-            cell.wishGroupLabel.textColor = .systemRed
-        }
         
         return cell
     }
@@ -119,6 +114,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Number of wishes: \(wishes.count)"
+    }
+    
+    func getColorToGroupName(withGroup wishGroup: String?) -> UIColor {
+        let context = getContext()
+        let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            for group in result as [NSManagedObject] {
+                if (group.value(forKey: "groupName") as! String?) == wishGroup {
+                    let color = group.value(forKey: "color") as! String
+                    
+                    let finishColor = groupsViewCell.transformStringTo(color: color)
+                    return finishColor
+                }
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+
+        return .black
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -13,7 +13,8 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
 
     var wishes: [Wish] = []
     var numberOfCurrentCurrency: Int = 1
-    var groups: [String] = ["Nearest", "Longterm", "Future"]
+    var groupsForPicker: [String] = []
+    var groups: [Group] = []
     var selectedGroup: String?
     var imageIsChanged = false
     var currentWishInNew: Wish!
@@ -27,10 +28,12 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var wishPriceField: UITextField!
     @IBOutlet weak var wishPriceCurrencyLabel: UILabel!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         createPickerView()
         
         if currentWishInNew != nil {
@@ -44,8 +47,14 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
             wishGroupField.text = currentWishInNew.wishGroup
             wishPriceCurrencyLabel.text = currentWishInNew.currency
         }
-
         
+        wishTitleField.delegate = self
+        wishCommentField.delegate = self
+        wishLinkField.delegate = self
+        
+        self.hideKeyboardWhenTappedOutside()
+        
+        wishTitleField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
 
     @IBAction func saveButtonPressed(_ sender: Any) {
@@ -59,9 +68,9 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
         let wishImage = wishImageInsert.image?.pngData()
         
         if currentWishInNew != nil {
-            saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: wishGroupField.text, withLink: wishLink, withComment: wishComment, withPrice: wishPrice!, withCurrency: wishPriceCurrencyLabel.text)
+            saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: wishGroup ?? "Default", withLink: wishLink, withComment: wishComment, withPrice: wishPrice!, withCurrency: wishPriceCurrencyLabel.text)
         } else {
-            saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: wishGroup, withLink: wishLink, withComment: wishComment, withPrice: wishPrice!, withCurrency: wishCurrency)
+            saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: selectedGroup ?? "Default", withLink: wishLink, withComment: wishComment, withPrice: wishPrice!, withCurrency: wishCurrency)
         }
 
         
@@ -95,7 +104,21 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         numberOfCurrentCurrency = 1
+        
+        let context = getContext()
+        let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
+
+        do {
+            let result = try context.fetch(fetchRequest)
+            for data in result as [NSManagedObject] {
+                groupsForPicker.append((data.value(forKey: "groupName") as! String))
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
     }
     
     
@@ -188,6 +211,11 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
         }
 
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
 }
 
@@ -197,15 +225,15 @@ extension NewWishViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        groups.count
+        groupsForPicker.count
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return groups[row]
+        return groupsForPicker[row]
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedGroup = groups[row]
+        selectedGroup = groupsForPicker[row]
         wishGroupField.text = selectedGroup
     }
 
@@ -257,4 +285,27 @@ extension NewWishViewController: UIImagePickerControllerDelegate, UINavigationCo
         dismiss(animated: true)
     }
     
+}
+
+extension NewWishViewController {
+    
+    func hideKeyboardWhenTappedOutside() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewWishViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc private func textFieldChanged() {
+        
+        if wishTitleField.text?.isEmpty == false{
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
+        
+    }
 }
