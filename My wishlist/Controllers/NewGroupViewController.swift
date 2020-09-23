@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NewGroupViewController: UITableViewController {
+class NewGroupViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var colorPickerView: UIPickerView!
@@ -28,10 +28,13 @@ class NewGroupViewController: UITableViewController {
         colorPickerView.dataSource = self
         colorPickerView.delegate = self
         
+        groupNameTextField.delegate = self
+        
         groupNameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
         setEditScreen()
         
+        self.hideKeyboardWhenTappedOutside()
     }
     
     @IBAction func saveAction(_ sender: Any) {
@@ -92,6 +95,11 @@ class NewGroupViewController: UITableViewController {
             saveButton.isEnabled = false
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     // MARK: - Table view data source
 
@@ -119,6 +127,17 @@ extension NewGroupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 }
 
 extension NewGroupViewController {
+    
+    func hideKeyboardWhenTappedOutside() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewWishViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     
     @objc private func textFieldChanged() {
         

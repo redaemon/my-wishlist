@@ -42,6 +42,7 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         switchCurrency(currency: currentWish.currency)
         
         wishLinkText.textContainerInset = UIEdgeInsets.zero
+        //wishLinkText.textContainerInset.left = 1
         wishLinkText.textContainer.lineFragmentPadding = 0
 
     }
