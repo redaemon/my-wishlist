@@ -70,7 +70,7 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
         if currentWishInNew != nil {
             saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: wishGroup ?? "Default", withLink: wishLink, withComment: wishComment, withPrice: wishPrice!, withCurrency: wishPriceCurrencyLabel.text)
         } else {
-            saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: selectedGroup ?? "Default", withLink: wishLink, withComment: wishComment, withPrice: wishPrice!, withCurrency: wishCurrency)
+            saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: selectedGroup ?? "Default", withLink: wishLink, withComment: wishComment, withPrice: wishPrice ?? 1, withCurrency: wishCurrency)
         }
 
         
