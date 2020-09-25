@@ -24,7 +24,6 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //setActualCurrenciesToLabels()
         self.dollarInRublesLabel.text = String(CurrencySettings.dollarInRubles!)
         self.euroInRublesLabel.text = String(CurrencySettings.euroInRubles!)
         self.dollarInEurosLabel.text = String(CurrencySettings.dollarInEuros!)
@@ -90,64 +89,5 @@ class SettingsViewController: UITableViewController {
         
         viewWillAppear(true)
     }
-    
-//    func getCurrencies(baseCurrency: String, exchangeToCurrency: String, handler:@escaping (Double?)-> Void){
-//        let url = NSURL(string: "https://api.exchangeratesapi.io/latest?base=\(baseCurrency)&symbols=\(exchangeToCurrency)")
-//        var exchangeRate: Double = 0
-//        let task = URLSession.shared.dataTask(with: url! as URL) {(data, response, error) in
-//
-//            if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
-//                exchangeRate = Double(((string.components(separatedBy: ",")[0]).components(separatedBy: ":")[2]).components(separatedBy: "}")[0]) ?? 81
-//                handler(exchangeRate)
-//            }
-//        }
-//        task.resume()
-//
-//    }
-//    
-//    func setActualCurrenciesToLabels(){
-//
-//        getCurrencies(baseCurrency: "EUR", exchangeToCurrency: "RUB") { (rate) in
-//            if var rate = rate{
-//                DispatchQueue.main.async {
-//                    rate = (rate * 100).rounded() / 100
-//                    //self.euroInRublesLabel.text = String(rate)
-//                    CurrencySettings.euroInRubles = rate
-//
-//                }
-//            }
-//        }
-//
-//        getCurrencies(baseCurrency: "USD", exchangeToCurrency: "RUB") { (rate) in
-//            if var rate = rate{
-//                DispatchQueue.main.async {
-//                    rate = (rate * 100).rounded() / 100
-//                    //self.dollarInRublesLabel.text = String(rate)
-//                    CurrencySettings.dollarInRubles = rate
-//                }
-//            }
-//        }
-//
-//        getCurrencies(baseCurrency: "USD", exchangeToCurrency: "EUR") { (rate) in
-//            if var rate = rate{
-//                DispatchQueue.main.async {
-//                    rate = (rate * 100).rounded() / 100
-//                    //self.dollarInEurosLabel.text = String(rate)
-//                    CurrencySettings.dollarInEuros = rate
-//                }
-//            }
-//        }
-//
-//        getCurrencies(baseCurrency: "EUR", exchangeToCurrency: "USD") { (rate) in
-//            if var rate = rate{
-//                DispatchQueue.main.async {
-//                    rate = (rate * 100).rounded() / 100
-//                    //self.euroInDollarsLabel.text = String(rate)
-//                    CurrencySettings.euroInDollars = rate
-//                }
-//            }
-//        }
-//
-//    }
 
 }

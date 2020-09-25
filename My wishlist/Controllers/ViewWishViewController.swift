@@ -26,8 +26,6 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var wishPriceCurrencyLabel: UILabel!
     @IBOutlet weak var wishLinkText: UITextView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -108,10 +106,7 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         }
         
     }
-    
-    
-    // MARK: - Table view data source
-    
+
     
     // MARK: - Core Data
     
