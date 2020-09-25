@@ -20,6 +20,7 @@
 		2E9C0D14251397EF00176AA3 /* My_wishlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D12251397EF00176AA3 /* My_wishlist.xcdatamodeld */; };
 		2E9C0D16251397F100176AA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E9C0D15251397F100176AA3 /* Assets.xcassets */; };
 		2E9C0D19251397F100176AA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E9C0D17251397F100176AA3 /* LaunchScreen.storyboard */; };
+		2EB2ADC8251CE9E600C1803C /* CurrencySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB2ADC7251CE9E600C1803C /* CurrencySettings.swift */; };
 		2EEF279B2513A29B0020D06C /* ViewWishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEF279A2513A29B0020D06C /* ViewWishViewController.swift */; };
 		2EEF279D2513B7E80020D06C /* NewWishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEF279C2513B7E80020D06C /* NewWishViewController.swift */; };
 		2EEF279F2513BCB60020D06C /* WishViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEF279E2513BCB60020D06C /* WishViewCell.swift */; };
@@ -41,6 +42,7 @@
 		2E9C0D15251397F100176AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E9C0D18251397F100176AA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E9C0D1A251397F100176AA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EB2ADC7251CE9E600C1803C /* CurrencySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySettings.swift; sourceTree = "<group>"; };
 		2EEF279A2513A29B0020D06C /* ViewWishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWishViewController.swift; sourceTree = "<group>"; };
 		2EEF279C2513B7E80020D06C /* NewWishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWishViewController.swift; sourceTree = "<group>"; };
 		2EEF279E2513BCB60020D06C /* WishViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishViewCell.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				2E9C0D09251397EF00176AA3 /* AppDelegate.swift */,
 				2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */,
+				2EB2ADC7251CE9E600C1803C /* CurrencySettings.swift */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				2E0D5487251989DC00E1B483 /* SettingsViewController.swift in Sources */,
 				2E0D547F2518D54D00E1B483 /* WishCollectionViewCell.swift in Sources */,
 				2E0D5485251975A300E1B483 /* ViewGroupViewController.swift in Sources */,
+				2EB2ADC8251CE9E600C1803C /* CurrencySettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

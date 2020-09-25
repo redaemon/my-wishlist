@@ -37,32 +37,37 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4WP-HM-18x">
-                                                    <rect key="frame" x="118" y="14" width="256" height="77"/>
+                                                    <rect key="frame" x="118" y="14" width="95.5" height="77"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgS-XJ-Zuz">
-                                                            <rect key="frame" x="0.0" y="0.0" width="256" height="23"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Wish title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgS-XJ-Zuz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="95.5" height="23"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwA-wR-qpl">
-                                                            <rect key="frame" x="0.0" y="33" width="256" height="18.5"/>
+                                                            <rect key="frame" x="0.0" y="33" width="95.5" height="18.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwY-Ur-2qd">
-                                                            <rect key="frame" x="0.0" y="61.5" width="256" height="15.5"/>
+                                                            <rect key="frame" x="0.0" y="61.5" width="95.5" height="15.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="GgS-XJ-Zuz" secondAttribute="trailing" id="4Ni-kj-oDA"/>
+                                                        <constraint firstItem="GgS-XJ-Zuz" firstAttribute="leading" secondItem="4WP-HM-18x" secondAttribute="leading" id="gDb-So-oYB"/>
+                                                        <constraint firstItem="GgS-XJ-Zuz" firstAttribute="width" secondItem="4WP-HM-18x" secondAttribute="width" id="r5E-Qo-rCP"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="4WP-HM-18x" secondAttribute="trailing" constant="20" id="0qS-2x-r0P"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="4WP-HM-18x" secondAttribute="trailing" constant="20" id="0qS-2x-r0P"/>
                                                 <constraint firstItem="4WP-HM-18x" firstAttribute="top" secondItem="h60-3A-TMq" secondAttribute="topMargin" constant="3" id="5qP-ux-hGU"/>
                                                 <constraint firstItem="tXJ-NC-p8n" firstAttribute="centerY" secondItem="h60-3A-TMq" secondAttribute="centerY" id="GH7-ce-aPv"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="4WP-HM-18x" secondAttribute="bottom" constant="3" id="I5g-U7-R4N"/>
@@ -173,6 +178,7 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="8b4-7Z-R6E" secondAttribute="trailing" constant="20" id="IvN-x7-c9C"/>
                                                 <constraint firstItem="8b4-7Z-R6E" firstAttribute="leading" secondItem="Jxa-Mk-nQl" secondAttribute="leading" constant="20" id="Op4-xi-4vA"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="8b4-7Z-R6E" secondAttribute="bottom" id="jAX-Ng-p7A"/>
                                                 <constraint firstItem="8b4-7Z-R6E" firstAttribute="top" secondItem="Jxa-Mk-nQl" secondAttribute="topMargin" constant="4" id="xol-2Z-hCV"/>
@@ -331,6 +337,7 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="2dk-9L-ODn" secondAttribute="trailing" constant="20" id="J6U-Lf-E3s"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="2dk-9L-ODn" secondAttribute="bottom" id="U1o-Yy-oVH"/>
                                                 <constraint firstItem="2dk-9L-ODn" firstAttribute="top" secondItem="q43-1h-w6m" secondAttribute="topMargin" constant="4" id="q5j-0X-YIY"/>
                                                 <constraint firstItem="2dk-9L-ODn" firstAttribute="leading" secondItem="q43-1h-w6m" secondAttribute="leading" constant="20" id="zoe-P6-mXa"/>
@@ -1034,6 +1041,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="HF6-Ys-aYH"/>
+                    <connections>
+                        <outlet property="dollarInEurosLabel" destination="Dq9-72-wg8" id="Gs8-Yh-ue6"/>
+                        <outlet property="dollarInRublesLabel" destination="TeZ-S8-Uav" id="hFh-tH-zk7"/>
+                        <outlet property="euroInDollarsLabel" destination="JRu-91-FyI" id="NuW-Az-GIQ"/>
+                        <outlet property="euroInRublesLabel" destination="DDd-rC-vDu" id="7u7-g7-k69"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vkm-fG-erI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1251,7 +1264,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="3eJ-mx-e8r"/>
-        <segue reference="tJQ-UP-TMn"/>
+        <segue reference="jRL-u9-n3g"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Photo" width="195" height="196"/>

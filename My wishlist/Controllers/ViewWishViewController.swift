@@ -35,14 +35,12 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         wishTitleLabel.text = currentWish.wishTitle
         wishPriceLabel.text = String(currentWish.wishPrice)
         wishCommentLabel.text = currentWish.wishComment
-        //wishLinkLabel.text = currentWish.wishLink
         wishGroupLabel.text = currentWish.wishGroup
         wishPriceCurrencyLabel.text = currentWish.currency
         wishLinkText.text = currentWish.wishLink
         switchCurrency(currency: currentWish.currency)
         
         wishLinkText.textContainerInset = UIEdgeInsets.zero
-        //wishLinkText.textContainerInset.left = 1
         wishLinkText.textContainer.lineFragmentPadding = 0
 
     }
@@ -78,9 +76,9 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         case "$":
             
             if wishPriceCurrencyLabel.text == "€" {
-                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * 0.84))
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * CurrencySettings.dollarInEuros!))
             } else if wishPriceCurrencyLabel.text == "₽" {
-                wishPriceLabel.text = String(currentWish.wishPrice * 78)
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * CurrencySettings.dollarInRubles!))
             } else {
                 wishPriceLabel.text = String(currentWish.wishPrice)
             }
@@ -88,9 +86,9 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         case "€":
             
             if wishPriceCurrencyLabel.text == "$" {
-                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * 1.18))
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * CurrencySettings.euroInDollars!))
             } else if wishPriceCurrencyLabel.text == "₽" {
-                wishPriceLabel.text = String(currentWish.wishPrice * 88)
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * CurrencySettings.euroInRubles!))
             } else {
                 wishPriceLabel.text = String(currentWish.wishPrice)
             }
@@ -98,9 +96,9 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         case "₽":
             
             if wishPriceCurrencyLabel.text == "$" {
-                wishPriceLabel.text = String(currentWish.wishPrice / 78)
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) / CurrencySettings.dollarInRubles!))
             } else if wishPriceCurrencyLabel.text == "€" {
-                wishPriceLabel.text = String(currentWish.wishPrice / 88)
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) / CurrencySettings.euroInRubles!))
             } else {
                 wishPriceLabel.text = String(currentWish.wishPrice)
             }

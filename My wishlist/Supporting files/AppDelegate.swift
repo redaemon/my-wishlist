@@ -13,9 +13,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setActualCurrenciesToLabels()
         return true
     }
 
@@ -77,6 +77,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    func getCurrencies(baseCurrency: String, exchangeToCurrency: String, handler:@escaping (Double?)-> Void){
+            let url = NSURL(string: "https://api.exchangeratesapi.io/latest?base=\(baseCurrency)&symbols=\(exchangeToCurrency)")
+            var exchangeRate: Double = 0
+            let task = URLSession.shared.dataTask(with: url! as URL) {(data, response, error) in
+    
+                if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
+                    exchangeRate = Double(((string.components(separatedBy: ",")[0]).components(separatedBy: ":")[2]).components(separatedBy: "}")[0]) ?? 81
+                    handler(exchangeRate)
+                }
+            }
+            task.resume()
+    
+        }
+    
+        func setActualCurrenciesToLabels(){
+    
+            getCurrencies(baseCurrency: "EUR", exchangeToCurrency: "RUB") { (rate) in
+                if var rate = rate{
+                    DispatchQueue.main.async {
+                        rate = (rate * 100).rounded() / 100
+                        CurrencySettings.euroInRubles = rate
+    
+                    }
+                }
+            }
+    
+            getCurrencies(baseCurrency: "USD", exchangeToCurrency: "RUB") { (rate) in
+                if var rate = rate{
+                    DispatchQueue.main.async {
+                        rate = (rate * 100).rounded() / 100
+                        CurrencySettings.dollarInRubles = rate
+                    }
+                }
+            }
+    
+            getCurrencies(baseCurrency: "USD", exchangeToCurrency: "EUR") { (rate) in
+                if var rate = rate{
+                    DispatchQueue.main.async {
+                        rate = (rate * 100).rounded() / 100
+                        CurrencySettings.dollarInEuros = rate
+                    }
+                }
+            }
+    
+            getCurrencies(baseCurrency: "EUR", exchangeToCurrency: "USD") { (rate) in
+                if var rate = rate{
+                    DispatchQueue.main.async {
+                        rate = (rate * 100).rounded() / 100
+                        CurrencySettings.euroInDollars = rate
+                    }
+                }
+            }
+    
+        }
+    
+    
 }
 
