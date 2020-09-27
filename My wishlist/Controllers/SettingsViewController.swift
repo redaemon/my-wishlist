@@ -11,6 +11,8 @@ import CoreData
 
 class SettingsViewController: UITableViewController {
 
+    let dataManager = DataManager()
+    
     @IBOutlet weak var dollarInRublesLabel: UILabel!
     @IBOutlet weak var euroInRublesLabel: UILabel!
     @IBOutlet weak var dollarInEurosLabel: UILabel!
@@ -19,10 +21,8 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.dollarInRublesLabel.text = String(CurrencySettings.dollarInRubles!)
-        self.euroInRublesLabel.text = String(CurrencySettings.euroInRubles!)
-        self.dollarInEurosLabel.text = String(CurrencySettings.dollarInEuros!)
-        self.euroInDollarsLabel.text = String(CurrencySettings.euroInDollars!)
+        setCurrenciesLabels()
+        
     }
 
 
@@ -41,16 +41,32 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    // MARK: - Exchange rates from User Defaults
+    
+    func setCurrenciesLabels() {
+        self.dollarInRublesLabel.text = String(CurrencySettings.dollarInRubles ?? 77)
+        self.euroInRublesLabel.text = String(CurrencySettings.euroInRubles ?? 88)
+        self.dollarInEurosLabel.text = String(CurrencySettings.dollarInEuros ?? 0.85)
+        self.euroInDollarsLabel.text = String(CurrencySettings.euroInDollars ?? 1.17)
+    }
+    
+    // MARK: - Deleting
+    
     func showAlert(message: String, deleteText: String) {
         let deleteAlert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .actionSheet)
         
         let delete = UIAlertAction(title: deleteText, style: .destructive) { [weak self] (action:UIAlertAction) in
             switch deleteText {
-            case "Delete the wishes": self?.deleteData(entity: "Wish")
-            case "Delete the groups": self?.deleteData(entity: "Group")
+            case "Delete the wishes":
+                self?.dataManager.deleteData(entity: "Wish")
+                self?.viewWillAppear(true)
+            case "Delete the groups":
+                self?.dataManager.deleteData(entity: "Group")
+                self?.viewWillAppear(true)
             case "Delete all data":
-                self?.deleteData(entity: "Wish")
-                self?.deleteData(entity: "Group")
+                self?.dataManager.deleteData(entity: "Wish")
+                self?.dataManager.deleteData(entity: "Group")
+                self?.viewWillAppear(true)
             default: print("wrong")
             };
         }
@@ -62,27 +78,6 @@ class SettingsViewController: UITableViewController {
         DispatchQueue.main.async {
             self.present(deleteAlert, animated: true)
         }
-    }
-    
-    private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
-    func deleteData(entity name:String) {
-        
-        let context = getContext()
-        let freq: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: name)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: freq)
-        
-        do {
-            try context.execute(deleteRequest)
-        }
-        catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        
-        viewWillAppear(true)
     }
 
 }

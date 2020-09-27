@@ -80,7 +80,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let context = dataManager.getContext()
         let wish: Wish! = wishes[indexPath.row]
         
-        let deleteTask = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+        let deleteWish = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
             context.delete(wish)
             self.wishes.remove(at: indexPath.row)
             
@@ -93,9 +93,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             completionHandler(true)
         }
-        deleteTask.image = UIImage(systemName: "trash")
+        deleteWish.image = UIImage(systemName: "trash")
         
-        let editTask = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+        let editWish = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let editViewController = storyboard.instantiateViewController(withIdentifier: "newWish") as! NewWishViewController
             let navController = UINavigationController(rootViewController: editViewController)
@@ -105,10 +105,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             completionHandler(true)
         }
-        editTask.backgroundColor = .systemGreen
-        editTask.image = UIImage(systemName: "pencil")
+        editWish.backgroundColor = .systemGreen
+        editWish.image = UIImage(systemName: "pencil")
         
-        return UISwipeActionsConfiguration(actions: [deleteTask, editTask])
+        return UISwipeActionsConfiguration(actions: [deleteWish, editWish])
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

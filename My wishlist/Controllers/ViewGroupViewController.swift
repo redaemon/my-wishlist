@@ -15,11 +15,11 @@ class ViewGroupViewController: UITableViewController {
     var groups: [Group] = []
     
     let groupsViewCell = GroupsViewCell()
+    let dataManager = DataManager()
     var color: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -67,7 +67,7 @@ class ViewGroupViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let context = getContext()
+        let context = dataManager.getContext()
         let group = groups[indexPath.row]
         
         if editingStyle == .delete {
@@ -86,15 +86,10 @@ class ViewGroupViewController: UITableViewController {
     
     // MARK: - Core data
     
-    private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let context = getContext()
+        let context = dataManager.getContext()
         let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
 
         do {

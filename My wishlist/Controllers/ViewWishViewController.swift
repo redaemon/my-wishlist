@@ -14,8 +14,6 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
     var currentWish: Wish!
     var wishes: [Wish] = []
     var numberOfCurrentCurrency: Int = 0
-
-    let dataManager = DataManager()
     
     @IBOutlet weak var wishImage: UIImageView!
     @IBOutlet weak var wishTitleLabel: UILabel!
@@ -29,18 +27,7 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        wishImage.image = UIImage(data: currentWish.wishImage!)
-        wishTitleLabel.text = currentWish.wishTitle
-        wishPriceLabel.text = String(currentWish.wishPrice)
-        wishCommentLabel.text = currentWish.wishComment
-        wishGroupLabel.text = currentWish.wishGroup
-        wishPriceCurrencyLabel.text = currentWish.currency
-        wishLinkText.text = currentWish.wishLink
-        switchCurrency(currency: currentWish.currency)
-        
-        wishLinkText.textContainerInset = UIEdgeInsets.zero
-        wishLinkText.textContainer.lineFragmentPadding = 0
-
+        setScreen()
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -74,9 +61,9 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         case "$":
             
             if wishPriceCurrencyLabel.text == "€" {
-                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * CurrencySettings.dollarInEuros!))
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * (CurrencySettings.dollarInEuros ?? 0.85)))
             } else if wishPriceCurrencyLabel.text == "₽" {
-                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * CurrencySettings.dollarInRubles!))
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * (CurrencySettings.dollarInRubles ?? 77)))
             } else {
                 wishPriceLabel.text = String(currentWish.wishPrice)
             }
@@ -84,9 +71,9 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         case "€":
             
             if wishPriceCurrencyLabel.text == "$" {
-                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * CurrencySettings.euroInDollars!))
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * (CurrencySettings.euroInDollars ?? 1.17)))
             } else if wishPriceCurrencyLabel.text == "₽" {
-                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * CurrencySettings.euroInRubles!))
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) * (CurrencySettings.euroInRubles ?? 88)))
             } else {
                 wishPriceLabel.text = String(currentWish.wishPrice)
             }
@@ -94,9 +81,9 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         case "₽":
             
             if wishPriceCurrencyLabel.text == "$" {
-                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) / CurrencySettings.dollarInRubles!))
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) / (CurrencySettings.dollarInRubles ?? 77)))
             } else if wishPriceCurrencyLabel.text == "€" {
-                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) / CurrencySettings.euroInRubles!))
+                wishPriceLabel.text = String(Int(Double(currentWish.wishPrice) / (CurrencySettings.euroInRubles ?? 88)))
             } else {
                 wishPriceLabel.text = String(currentWish.wishPrice)
             }
@@ -107,6 +94,24 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         
     }
  
+    // MARK: - Set the Screen
+    
+    private func setScreen() {
+        wishImage.image = UIImage(data: currentWish.wishImage!)
+        wishTitleLabel.text = currentWish.wishTitle
+        wishPriceLabel.text = String(currentWish.wishPrice)
+        wishCommentLabel.text = currentWish.wishComment
+        wishGroupLabel.text = currentWish.wishGroup
+        wishPriceCurrencyLabel.text = currentWish.currency
+        wishLinkText.text = currentWish.wishLink
+        switchCurrency(currency: currentWish.currency)
+        
+        wishLinkText.textContainerInset = UIEdgeInsets.zero
+        wishLinkText.textContainer.lineFragmentPadding = 0
+    }
+    
+    // MARK: - Currency switcher
+    
     func switchCurrency(currency: String?){
         switch currency {
         case "$":

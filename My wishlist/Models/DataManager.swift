@@ -40,5 +40,20 @@ class DataManager {
         return .black
     }
     
+    // MARK: - All data
+    
+    func deleteData(entity name:String) {
+        
+        let context = getContext()
+        let freq: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: name)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: freq)
+        
+        do {
+            try context.execute(deleteRequest)
+        }
+        catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
     
 }

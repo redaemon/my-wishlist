@@ -11,23 +11,24 @@ import CoreData
 
 class NewGroupViewController: UITableViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var groupNameTextField: UITextField!
-    @IBOutlet weak var colorPickerView: UIPickerView!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    
-    let colorArray: [String] = ["Red", "Orange", "Yellow", "Green", "Blue", "Sky", "Purple", "Pink", "Indigo", "Brown", "White"]
-    
     var newGroup: Group!
     var groups: [Group] = []
     var selectedColor: String?
+    
+    let colorArray: [String] = ["Red", "Orange", "Yellow", "Green", "Blue", "Sky", "Purple", "Pink", "Indigo", "Brown", "White"]
+    
+    let dataManager = DataManager()
+    
+    @IBOutlet weak var groupNameTextField: UITextField!
+    @IBOutlet weak var colorPickerView: UIPickerView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         colorPickerView.dataSource = self
         colorPickerView.delegate = self
-        
         groupNameTextField.delegate = self
         
         groupNameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
@@ -56,13 +57,8 @@ class NewGroupViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Core Data
     
-    private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
     private func saveGroup(withTitle groupTitle: String?, withColor groupColor: String?) {
-        let context = getContext()
+        let context = dataManager.getContext()
         
         if newGroup == nil {
             guard let entityGroup = NSEntityDescription.entity(forEntityName: "Group", in: context) else { return }
@@ -84,7 +80,9 @@ class NewGroupViewController: UITableViewController, UITextFieldDelegate {
         self.performSegue(withIdentifier: "saveGroupAndReload", sender: self)
     }
     
-    func setEditScreen() {
+    // MARK: - Set Edit Screen
+    
+    private func setEditScreen() {
         
         if newGroup != nil {
             self.title = "Edit group"
@@ -96,14 +94,14 @@ class NewGroupViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: - Exit from keyboard by "Done" button
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 
-    // MARK: - Table view data source
-
-    
+    // MARK: - Picker View
     
 }
 
@@ -125,6 +123,8 @@ extension NewGroupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         selectedColor = colorArray[row]
     }
 }
+
+    // MARK: - Hide Keyboard functions and Save button settings
 
 extension NewGroupViewController {
     

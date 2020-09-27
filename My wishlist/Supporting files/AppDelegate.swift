@@ -79,60 +79,90 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func getCurrencies(baseCurrency: String, exchangeToCurrency: String, handler:@escaping (Double?)-> Void){
-            let url = NSURL(string: "https://api.exchangeratesapi.io/latest?base=\(baseCurrency)&symbols=\(exchangeToCurrency)")
-            var exchangeRate: Double = 0
-            let task = URLSession.shared.dataTask(with: url! as URL) {(data, response, error) in
-    
-                if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
-                    exchangeRate = Double(((string.components(separatedBy: ",")[0]).components(separatedBy: ":")[2]).components(separatedBy: "}")[0]) ?? 81
-                    handler(exchangeRate)
-                }
+        let url = NSURL(string: "https://api.exchangeratesapi.io/latest?base=\(baseCurrency)&symbols=\(exchangeToCurrency)")
+        var exchangeRate: Double = 0
+        let task = URLSession.shared.dataTask(with: url! as URL) {(data, response, error) in
+            
+            if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
+                exchangeRate = Double(((string.components(separatedBy: ",")[0]).components(separatedBy: ":")[2]).components(separatedBy: "}")[0]) ?? 81
+                handler(exchangeRate)
             }
-            task.resume()
-    
         }
+        task.resume()
+        
+    }
     
-        func setActualCurrenciesToLabels(){
+    func setActualCurrenciesToLabels(){
+        
+//        getCurrencies(baseCurrency: "EUR", exchangeToCurrency: "RUB") { (rate) in
+//            if var rate = rate{
+//                DispatchQueue.main.async {
+//                    rate = (rate * 100).rounded() / 100
+//                    CurrencySettings.euroInRubles = rate
+//
+//                }
+//            }
+//        }
+//
+//        getCurrencies(baseCurrency: "USD", exchangeToCurrency: "RUB") { (rate) in
+//            if var rate = rate{
+//                DispatchQueue.main.async {
+//                    rate = (rate * 100).rounded() / 100
+//                    CurrencySettings.dollarInRubles = rate
+//                }
+//            }
+//        }
+//
+//        getCurrencies(baseCurrency: "USD", exchangeToCurrency: "EUR") { (rate) in
+//            if var rate = rate{
+//                DispatchQueue.main.async {
+//                    rate = (rate * 100).rounded() / 100
+//                    CurrencySettings.dollarInEuros = rate
+//                }
+//            }
+//        }
+//
+//        getCurrencies(baseCurrency: "EUR", exchangeToCurrency: "USD") { (rate) in
+//            if var rate = rate{
+//                DispatchQueue.main.async {
+//                    rate = (rate * 100).rounded() / 100
+//                    CurrencySettings.euroInDollars = rate
+//                }
+//            }
+//        }
+        
+        getCurrency(baseCurrency: "EUR", exchangeToCurrency: "RUB")
+        getCurrency(baseCurrency: "EUR", exchangeToCurrency: "USD")
+        getCurrency(baseCurrency: "USD", exchangeToCurrency: "RUB")
+        getCurrency(baseCurrency: "USD", exchangeToCurrency: "EUR")
+        
+    }
     
-            getCurrencies(baseCurrency: "EUR", exchangeToCurrency: "RUB") { (rate) in
-                if var rate = rate{
-                    DispatchQueue.main.async {
-                        rate = (rate * 100).rounded() / 100
-                        CurrencySettings.euroInRubles = rate
-    
+    func getCurrency(baseCurrency: String, exchangeToCurrency: String) {
+        getCurrencies(baseCurrency: baseCurrency, exchangeToCurrency: exchangeToCurrency) { (rate) in
+            if var rate = rate{
+                DispatchQueue.main.async {
+                    rate = (rate * 100).rounded() / 100
+                    
+                    switch baseCurrency {
+                    case "EUR":
+                        if exchangeToCurrency == "RUB" {
+                            CurrencySettings.euroInRubles = rate
+                        } else {
+                            CurrencySettings.euroInDollars = rate
+                        }
+                    case "USD":
+                        if exchangeToCurrency == "RUB" {
+                            CurrencySettings.dollarInRubles = rate
+                        } else {
+                            CurrencySettings.dollarInEuros = rate
+                        }
+                    default: print("wrong")
                     }
                 }
             }
-    
-            getCurrencies(baseCurrency: "USD", exchangeToCurrency: "RUB") { (rate) in
-                if var rate = rate{
-                    DispatchQueue.main.async {
-                        rate = (rate * 100).rounded() / 100
-                        CurrencySettings.dollarInRubles = rate
-                    }
-                }
-            }
-    
-            getCurrencies(baseCurrency: "USD", exchangeToCurrency: "EUR") { (rate) in
-                if var rate = rate{
-                    DispatchQueue.main.async {
-                        rate = (rate * 100).rounded() / 100
-                        CurrencySettings.dollarInEuros = rate
-                    }
-                }
-            }
-    
-            getCurrencies(baseCurrency: "EUR", exchangeToCurrency: "USD") { (rate) in
-                if var rate = rate{
-                    DispatchQueue.main.async {
-                        rate = (rate * 100).rounded() / 100
-                        CurrencySettings.euroInDollars = rate
-                    }
-                }
-            }
-    
         }
-    
+    }
     
 }
 
