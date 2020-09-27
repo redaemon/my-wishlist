@@ -16,11 +16,6 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var dollarInEurosLabel: UILabel!
     @IBOutlet weak var euroInDollarsLabel: UILabel!
     
-    var dollarInRubles: Double = 0
-    var euroInRubles: Double = 0
-    var dollarInEuros: Double = 0
-    var euroInDollars: Double = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -12,12 +12,18 @@ import CoreData
 class NewWishViewController: UITableViewController, UITextFieldDelegate {
 
     var wishes: [Wish] = []
+    var currentWishInNew: Wish!
+    
     var numberOfCurrentCurrency: Int = 1
+    
     var groupsForPicker: [String] = []
     var groups: [Group] = []
+    
     var selectedGroup: String?
     var imageIsChanged = false
-    var currentWishInNew: Wish!
+    
+    let dataManager = DataManager()
+    
     var userFromCollectionView = false
     
     @IBOutlet weak var wishTitleField: UITextField!
@@ -36,17 +42,7 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
         
         createPickerView()
         
-        if currentWishInNew != nil {
-            self.title = "Edit wish"
-            
-            wishImageInsert.image = UIImage(data: currentWishInNew.wishImage!)
-            wishTitleField.text = currentWishInNew.wishTitle
-            wishPriceField.text = String(currentWishInNew.wishPrice)
-            wishCommentField.text = currentWishInNew.wishComment
-            wishLinkField.text = currentWishInNew.wishLink
-            wishGroupField.text = currentWishInNew.wishGroup
-            wishPriceCurrencyLabel.text = currentWishInNew.currency
-        }
+        editWish()
         
         wishTitleField.delegate = self
         wishCommentField.delegate = self
@@ -72,7 +68,6 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
         } else {
             saveWish(withTitle: wishTitle, withImage: wishImage, withGroup: selectedGroup ?? "Default", withLink: wishLink, withComment: wishComment, withPrice: wishPrice ?? 1, withCurrency: wishCurrency)
         }
-
         
         dismiss(animated: true)
     }
@@ -103,28 +98,22 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        numberOfCurrentCurrency = 1
-        
-        let context = getContext()
-        let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
+    // MARK: - Edit View
 
-        do {
-            let result = try context.fetch(fetchRequest)
-            for data in result as [NSManagedObject] {
-                groupsForPicker.append((data.value(forKey: "groupName") as! String))
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
+    private func editWish() {
+        
+        if currentWishInNew != nil {
+            self.title = "Edit wish"
+            
+            wishImageInsert.image = UIImage(data: currentWishInNew.wishImage!)
+            wishTitleField.text = currentWishInNew.wishTitle
+            wishPriceField.text = String(currentWishInNew.wishPrice)
+            wishCommentField.text = currentWishInNew.wishComment
+            wishLinkField.text = currentWishInNew.wishLink
+            wishGroupField.text = currentWishInNew.wishGroup
+            wishPriceCurrencyLabel.text = currentWishInNew.currency
         }
-        
     }
-    
-    
-    // MARK: - Table view data source
-
-
     
     // MARK: - Table view delegate
     
@@ -168,14 +157,9 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Core data
     
-    private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
     private func saveWish(withTitle wishTitle: String?, withImage wishImage: Data?, withGroup wishGroup: String?, withLink wishLink: String?, withComment wishComment: String?, withPrice wishPrice: Int, withCurrency wishPriceCurrency: String?) {
         
-        let context = getContext()
+        let context = dataManager.getContext()
         
         if currentWishInNew == nil {
             
@@ -212,12 +196,34 @@ class NewWishViewController: UITableViewController, UITextFieldDelegate {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        numberOfCurrentCurrency = 1
+        
+        let context = dataManager.getContext()
+        let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
+
+        do {
+            let result = try context.fetch(fetchRequest)
+            for data in result as [NSManagedObject] {
+                groupsForPicker.append((data.value(forKey: "groupName") as! String))
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    // MARK: - Exit from keyboard by "Done" button
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 
 }
+
+// MARK: - Picker View
 
 extension NewWishViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -261,6 +267,8 @@ extension NewWishViewController: UIPickerViewDelegate, UIPickerViewDataSource{
 
 }
 
+// MARK: - Image Picker
+
 extension NewWishViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     func chooseImagePicker(source:UIImagePickerController.SourceType){
@@ -286,6 +294,8 @@ extension NewWishViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
 }
+
+// MARK: - Hide Keyboard functions and Save button settings
 
 extension NewWishViewController {
     

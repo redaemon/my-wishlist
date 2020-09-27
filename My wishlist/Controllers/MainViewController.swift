@@ -16,6 +16,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var groupEntity: Group!
     let groupsViewCell = GroupsViewCell()
     let wishTableCell = WishViewCell()
+    let dataManager = DataManager()
     
     @IBOutlet weak var wishTable: UITableView!
     
@@ -25,9 +26,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.wishTable.delegate = self
         self.wishTable.dataSource = self
-    
+        
     }
-    
     
     @IBAction func editButtonTapped(_ sender: Any) {
         self.wishTable.setEditing(!wishTable.isEditing, animated: true)
@@ -62,8 +62,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.wishTitleLabel.text = wish.wishTitle
         cell.wishPriceLabel.text = "\(String(wish.wishPrice)) \(currency)"
         cell.wishGroupLabel.text = wish.wishGroup
-        cell.wishGroupLabel.textColor = getColorToGroupName(withGroup: wish.wishGroup)
-        
+        cell.wishGroupLabel.textColor = dataManager.getColorToGroupName(withGroup: wish.wishGroup)
         
         return cell
     }
@@ -78,7 +77,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let context = getContext()
+        let context = dataManager.getContext()
         let wish: Wish! = wishes[indexPath.row]
         
         let deleteTask = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
@@ -116,27 +115,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return "Number of wishes: \(wishes.count)"
     }
     
-    func getColorToGroupName(withGroup wishGroup: String?) -> UIColor {
-        let context = getContext()
-        let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
-        
-        do {
-            let result = try context.fetch(fetchRequest)
-            for group in result as [NSManagedObject] {
-                if (group.value(forKey: "groupName") as! String?) == wishGroup {
-                    let color = group.value(forKey: "color") as! String
-                    
-                    let finishColor = groupsViewCell.transformStringTo(color: color)
-                    return finishColor
-                }
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-
-        return .black
-    }
-
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showWish" {
             guard let indexPath = wishTable.indexPathForSelectedRow else { return }
@@ -152,30 +132,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Core Data
     
-    private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        let context = getContext()
+        
+        let context = dataManager.getContext()
         let fetchRequest: NSFetchRequest<Wish> = Wish.fetchRequest()
         let sort = NSSortDescriptor(key: "wishGroup", ascending: false)
         fetchRequest.sortDescriptors = [sort]
-
+        
         do {
             wishes = try context.fetch(fetchRequest)
-
+            
         } catch let error as NSError {
             print(error.localizedDescription)
         }
-
         
         self.wishTable.reloadData()
         
     }
-    
-
 }

@@ -14,8 +14,8 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
     var currentWish: Wish!
     var wishes: [Wish] = []
     var numberOfCurrentCurrency: Int = 0
-    
-    var mainVC = MainViewController()
+
+    let dataManager = DataManager()
     
     @IBOutlet weak var wishImage: UIImageView!
     @IBOutlet weak var wishTitleLabel: UILabel!
@@ -106,16 +106,7 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         }
         
     }
-
-    
-    // MARK: - Core Data
-    
-    private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-        
-    }
-    
+ 
     func switchCurrency(currency: String?){
         switch currency {
         case "$":
@@ -129,6 +120,8 @@ class ViewWishViewController: UITableViewController, UITextFieldDelegate {
         }
     }
 
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "editWish" {

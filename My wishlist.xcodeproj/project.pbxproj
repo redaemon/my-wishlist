@@ -13,6 +13,7 @@
 		2E0D54832519758300E1B483 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D54822519758300E1B483 /* NewGroupViewController.swift */; };
 		2E0D5485251975A300E1B483 /* ViewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D5484251975A300E1B483 /* ViewGroupViewController.swift */; };
 		2E0D5487251989DC00E1B483 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D5486251989DC00E1B483 /* SettingsViewController.swift */; };
+		2E8CAB5A2520BE70009D5554 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8CAB592520BE70009D5554 /* DataManager.swift */; };
 		2E9C0D0A251397EF00176AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D09251397EF00176AA3 /* AppDelegate.swift */; };
 		2E9C0D0C251397EF00176AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */; };
 		2E9C0D0E251397EF00176AA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C0D0D251397EF00176AA3 /* MainViewController.swift */; };
@@ -33,6 +34,7 @@
 		2E0D54822519758300E1B483 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		2E0D5484251975A300E1B483 /* ViewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGroupViewController.swift; sourceTree = "<group>"; };
 		2E0D5486251989DC00E1B483 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2E8CAB592520BE70009D5554 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2E9C0D06251397EF00176AA3 /* My wishlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My wishlist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9C0D09251397EF00176AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E9C0D0B251397EF00176AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				2E9C0D12251397EF00176AA3 /* My_wishlist.xcdatamodeld */,
+				2E8CAB592520BE70009D5554 /* DataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E9C0D14251397EF00176AA3 /* My_wishlist.xcdatamodeld in Sources */,
+				2E8CAB5A2520BE70009D5554 /* DataManager.swift in Sources */,
 				2EEF279B2513A29B0020D06C /* ViewWishViewController.swift in Sources */,
 				2EEF279F2513BCB60020D06C /* WishViewCell.swift in Sources */,
 				2E9C0D0E251397EF00176AA3 /* MainViewController.swift in Sources */,

@@ -17,15 +17,13 @@ class ImageCollectionViewController: UICollectionViewController {
     let itemsPerRow: CGFloat = 2
     let sectionInserts = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
     
-    @IBOutlet var imageCollectionView: UICollectionView!
+    let dataManager = DataManager()
     
+    @IBOutlet var imageCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-        
-        
     }
 
     @IBAction func unwindToCollectionView(segue: UIStoryboardSegue) {
@@ -35,14 +33,13 @@ class ImageCollectionViewController: UICollectionViewController {
             }
         }
     }
-
-    // MARK: UICollectionViewDataSource
+    
+    // MARK: - UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -63,12 +60,11 @@ class ImageCollectionViewController: UICollectionViewController {
         cell.imageView.heightAnchor.constraint(equalToConstant: CGFloat(widthPerItem)).isActive = true
         cell.imageView.widthAnchor.constraint(equalToConstant: CGFloat(widthPerItem)).isActive = true
         
-        
         return cell
     }
 
     
-    // MARK: UICollectionViewDelegate
+    // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showWish" {
@@ -78,36 +74,25 @@ class ImageCollectionViewController: UICollectionViewController {
             let wish: Wish
             
             wish = wishes[indexPath!.row]
-            
-            
             let destinationNavigation = segue.destination as! UINavigationController
             let targetController = destinationNavigation.topViewController as! ViewWishViewController
-
             targetController.currentWish = wish
         }
         
         if segue.identifier == "newWishFromCollection" {
             let destinationNavigation = segue.destination as! UINavigationController
             let targetController = destinationNavigation.topViewController as! NewWishViewController
-
             targetController.userFromCollectionView = true
-            
         }
     }
     
     
-    
     // MARK: - Core Data
-    
-    private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let context = getContext()
+        let context = dataManager.getContext()
         let fetchRequest: NSFetchRequest<Wish> = Wish.fetchRequest()
         let sort = NSSortDescriptor(key: "wishGroup", ascending: false)
         fetchRequest.sortDescriptors = [sort]
@@ -119,14 +104,12 @@ class ImageCollectionViewController: UICollectionViewController {
             print(error.localizedDescription)
         }
         
-        
         self.imageCollectionView.reloadData()
-        
     }
     
-
 }
 
+// MARK: - Edit Image Cells
 
 extension ImageCollectionViewController: UICollectionViewDelegateFlowLayout{
 
